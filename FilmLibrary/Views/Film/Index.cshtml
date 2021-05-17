@@ -1,0 +1,20 @@
+﻿@using FilmLibrary.Data.Models
+@model IEnumerable<Film>
+
+@{
+    Layout = "_Layout";
+}
+
+<main>
+     <section class="filmSection">
+        @foreach (var film in Model) {
+            <div>
+                <a href="/Film/Watch/@film.id">
+                    <img src="@film.MovieImg" alt="filmsImg" class="filmPicture">
+                    <p>@film.Title</p>
+                </a>
+            </div>
+         }
+    </section>
+</main>
+    

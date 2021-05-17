@@ -1,0 +1,38 @@
+﻿@using FilmLibrary.Data.Models
+
+@model Film
+
+@{
+    Layout = "_Layout";
+}
+
+<main>
+    <div>
+        <img src="@Model.MovieImg" alt="filmsImg" class="filmPicture">
+        <p>@Model.Title</p>
+        <p>Описание: @Model.Description</p>
+        <p>
+            Актеры:
+            <ul>
+                @foreach (Actor actor in Model.Actors)
+                {
+                    <li>
+                        @actor.Name
+                    </li>
+                }
+            </ul>
+        </p>
+        <p>
+            Жанры:
+            <ul>
+                @foreach(Genre genre in Model.Genres)
+            {
+                    <li>
+                        @genre.Gener
+                    </li>
+            }
+            </ul>
+        </p>
+
+    </div>
+</main>
