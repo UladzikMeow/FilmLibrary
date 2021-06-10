@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Collections.Generic;
+using System;
 
 namespace FilmLibrary.Controllers
 {
@@ -25,13 +26,14 @@ namespace FilmLibrary.Controllers
             return View(film);
         }
 
-        [HttpPost]
+        [HttpGet]
         public IActionResult Serch(string Title)
         {
             List<Film> serchedFilms = new List<Film>();
+            if (Title == null) return View(db.Films.ToList());
             foreach(Film film in db.Films)
             {
-                if(film.Title == Title)
+                if(film.Title.Contains(Title))
                 {
                     serchedFilms.Add(film);
                 }
@@ -39,5 +41,11 @@ namespace FilmLibrary.Controllers
             return View(serchedFilms);
         }
 
+        [HttpPost]
+        public IActionResult addReview()
+        {
+
+            return RedirectToAction("Film/Watch");
+        }
     }
 }

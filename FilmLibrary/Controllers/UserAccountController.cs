@@ -1,5 +1,6 @@
 ﻿using FilmLibrary.Data.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,15 +12,19 @@ namespace FilmLibrary.Controllers
 {
     public class UserAccountController : Controller
     {
-        FilmContext db;
-        public UserAccountController(FilmContext context)
-        {
-            db = context;
-        }
 
+        RoleManager<IdentityRole> _roleManager;
+        UserManager<User> _userManager;
+        public UserAccountController(RoleManager<IdentityRole> roleManager, UserManager<User> userManager)
+        {
+            _roleManager = roleManager;
+            _userManager = userManager;
+        }
+       
+        [Authorize]
         public IActionResult UserIndex()
         {
-            return View();
+            return View(_userManager.Users.ToList());
         }
     }
 }

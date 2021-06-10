@@ -1,17 +1,50 @@
-﻿@{
+﻿@model IEnumerable<FilmLibrary.Data.Models.User>
+
+@{
     Layout = "_Layout";
 }
+
 @if (User.Identity.IsAuthenticated)
 {
-    <p>@User.Identity.Name</p>
-
-    <form method="post" asp-controller="Account" asp-action="Logout">
-        <input type="submit" value="Выход" />
-    </form>
-    <a asp-controller="Roles" asp-action="Index">Редактирование ролей</a>
+    <main class="main">
+        <p class="lk-p">Личная кабинет</p>
+        <nav class="lk-nav">
+            <a href="#">Смотрю</a>
+            <a href="#">Просмотренные</a>
+            <a href="#">Запланированно</a>
+            <a href="#">Брошено</a>
+        </nav>
+        <div class="main-container4">
+            <div class="block-image-lk">
+                <img src="/img/userPic.svg" alt="">
+                <button type="submit">НАСТРОЙКИ</button>
+                <form method="post" asp-controller="Account" asp-action="Logout" style="margin: 0 auto">
+                    <button type="submit">ВЫХОД</button>
+                </form>
+            </div>
+            <div class="block-title-lk">
+                @foreach (var user in Model)
+                {
+                    if (user.UserName == User.Identity.Name)
+                    {
+                        <p>Личная информация</p>
+                        <p><span>LOGIN: </span>@user.UserName</p>
+                        <p><span>AGE: </span>20</p>
+                        <p><span>DATE OF BIRTH: </span>23.02.2001</p>
+                        <p><span>E-MAIL: </span>@user.Email</p>
+                        <p><span>PHONE NUMBER: </span>+375-(29)-456-78-90</p>
+                        <p>
+                            <span>VK.COM: </span>
+                            <a href="https://vk.com/oyshers">https://vk.com/oyshers</a>
+                        </p>}
+                }
+                <p><a asp-controller="Roles" asp-action="Index">Редактирование ролей</a></p>
+            </div>
+        </div>
+    </main>
 }
 else
 {
-    <a asp-controller="Account" asp-action="Login">Вход</a>
-    <a asp-controller="Account" asp-action="Register">Регистрация</a>
+    
 }
+

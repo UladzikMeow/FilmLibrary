@@ -5,16 +5,21 @@
     Layout = "_Layout";
 }
 
-<h2>Изменение ролей для пользователя @Model.UserEmail</h2>
 
-<form asp-action="Edit" method="post">
-    <input type="hidden" name="userId" value="@Model.UserId" />
-    <div class="form-group">
-        @foreach (IdentityRole role in Model.AllRoles)
-        {
-            <input type="checkbox" name="roles" value="@role.Name"
-                   @(Model.UserRoles.Contains(role.Name) ? "checked=\"checked\"" : "") />@role.Name <br />
-            }
-    </div>
-    <button type="submit" class="btn btn-primary">Сохранить</button>
-</form>
+<main class="main4">
+    <p class="changes-user-p">CHANGE ACCESS LEVEL FOR USER: <br><span>@Model.UserEmail</span></p>
+
+    <form asp-action="Edit" method="post" class="main-container6">
+        <input type="hidden" name="userId" value="@Model.UserId" />
+        <div class="container">
+            <div class="block-role-ch">
+                @foreach (IdentityRole role in Model.AllRoles)
+                {
+                    <input type="checkbox" name="roles" value="@role.Name"
+                           @(Model.UserRoles.Contains(role.Name) ? "checked=\"checked\"" : "") /><p>@role.Name</p> <br />
+                    }
+            </div>
+        </div>
+        <button type="submit">SAVE CHANGES</button>
+    </form>
+</main>

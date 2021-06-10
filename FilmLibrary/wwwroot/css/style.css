@@ -6,76 +6,25 @@ body {
   width: 100%;
   font-family: 'Arimo', sans-serif;
 }
-header {
-  height: 134px;
-  background-color: #262626;
-  display: flex;
-  justify-content: space-between;
-}
-.logo {
-  margin-left: 32px;
-}
-.userButtons ul {
-  margin: 71px 34px 0px 0px;
-  display: flex;
-}
-.userButtons li {
-  list-style-type: none;
-  margin-right: 17px;
-}
-
-.userButtons li:last-child {
-  margin-right: 0px;
-}
-.userButtons img {
-  width: 32px;
-  height: 32px;
-}
-.navigation {
-  height: 42px;
-  background-color: #131313;
-  padding-top: 11px;
-}
-.navigation ul {
-  margin-left: 38px;
-  display: flex;
-}
-.navigation li {
-  list-style-type: none;
-  margin-right: 135px;
-}
-.navigation li:last-child {
-  margin-right: 0px;
-}
-.navigation li a {
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 24px;
-  color: #ffffff;
-}
-.navigation li a:hover {
-  border-bottom: 2px solid #ffffff;
-}
-
-main {
-  padding-top: 30px;
-  height: 786px;
+.filmIndex {
+  padding: 30px 0px;
   display: flex;
 }
 .filmSection {
-  margin-left: 38px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  height: 100%;
-  width: 100%;
-  font-size: 24px;
+    margin: 0 40px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 28px;
 }
+    .filmSection a {
+        text-decoration: none;
+    }
 .filmPicture {
-  margin-right: 31px;
-  background-color: #c8c8c8;
-  width: 200px;
-  height: 300px;
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
 }
 .asideBar div {
   margin-right: 32px;
@@ -84,51 +33,4 @@ main {
   width: 409px;
   height: 147px;
   margin-bottom: 31px;
-}
-footer {
-  height: 112px;
-  background-color: #262626;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-footer li {
-  list-style-type: none;
-}
-footer li a {
-  text-decoration: none;
-}
-
-.conditions {
-  margin-left: 38px;
-}
-
-.conditions a {
-  font-size: 18px;
-  color: #6a6a6a;
-  text-transform: uppercase;
-}
-
-.socialNetworks {
-  display: flex;
-}
-.socialNetworks li {
-  margin-right: 134px;
-}
-.socialNetworks li:last-child {
-  margin-right: 0px;
-}
-.infoAboutAuthor {
-  text-align: right;
-  margin-right: 34px;
-}
-.infoAboutAuthor p {
-  text-transform: uppercase;
-  font-weight: bold;
-  color: #6a6a6a;
-}
-.infoAboutAuthor a {
-  font-size: 18px;
-  text-decoration: none;
-  color: #6a6a6a;
 }

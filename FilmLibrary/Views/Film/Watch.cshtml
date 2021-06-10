@@ -7,32 +7,57 @@
 }
 
 <main>
-    <div>
-        <img src="@Model.MovieImg" alt="filmsImg" class="filmPicture">
-        <p>@Model.Title</p>
-        <p>Описание: @Model.Description</p>
-        <p>
-            Актеры:
-            <ul>
+    <div class="main-container2">
+        <div class="block-image">
+            <img src="@Model.MovieImg" alt="filmsImg">
+            <p>9.5 из 10 <span>&#9733</span></p>
+        </div>
+        <div class="block-title">
+            <p><span>Название: </span>@Model.Title</p>
+            <p>
+                <span>Актёры: </span>
                 @foreach (Actor actor in Model.Actors)
                 {
-                    <li>
-                        @actor.Name
-                    </li>
+                    <a>@actor.Name</a>
                 }
-            </ul>
-        </p>
-        <p>
-            Жанры:
-            <ul>
-                @foreach(Genre genre in Model.Genres)
-            {
-                    <li>
+            </p>
+            <p>
+                <span>Жанры: </span>
+                @foreach (Genre genre in Model.Genres)
+                {
+                    <a>
                         @genre.Gener
-                    </li>
+                    </a>
+                }
+            </p>
+            <p><span>Описание: </span> <br> @Model.Description</p>
+        </div>
+    </div>
+    <div class="review-title">
+        <p>Отзывы по фильму</p>
+    </div>
+
+    <div class="review-out-container">
+        @if (Model.Reviews.Count > 0)
+        {
+            foreach (Review review in Model.Reviews)
+            {
+                <p>@review.User.UserName</p>
+                <p>@review.ReviewText</p>
             }
-            </ul>
-        </p>
+        }
+        else
+        {
+            <p>Отзывов нет</p>
+        }
 
     </div>
-</main>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div class="review-container">
+            <p>@User.Identity.Name</p>
+            <textarea name="textReview" id="textReview" cols="30" rows="10" placeholder="Ваш отзыв"></textarea>
+            <button>ОТПРАВИТЬ</button>
+        </div>
+    }
+ </main>

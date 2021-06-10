@@ -11,7 +11,7 @@ namespace FilmLibrary.Data.Models
         public string Title { get; set; }
         public string MovieImg { get; set; }
         public string Description { get; set; }
-
+        public virtual List<Review> Reviews { get; set; } = new List<Review>();
         public virtual List<Actor> Actors { get; set; } = new List<Actor>();
         public virtual List<Genre> Genres { get; set; } = new List<Genre>();
      

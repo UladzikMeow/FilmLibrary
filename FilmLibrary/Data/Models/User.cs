@@ -8,5 +8,6 @@ namespace FilmLibrary.Data.Models
 {
     public class User : IdentityUser
     {
+        public virtual List<Review> Review { get; set; } = new List<Review>();
     }
 }

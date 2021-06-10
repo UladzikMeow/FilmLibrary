@@ -4,15 +4,27 @@
     Layout = "_Layout";
 }
 
-<h2>Список пользователей</h2>
-<table class="table">
-    @foreach (var user in Model)
-    {
-        <tr>
-            <td>@user.Email</td>
-            <td>
-                <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-userid="@user.Id">Права доступа</a>
-            </td>
-        </tr>
-    }
-</table>
+<main class="main3">
+    <p class="list-user-p">USER LIST</p>
+    <table>
+        <thead>
+            <tr>
+                <td>LOGIN</td>
+                <td rowspan="2">E-MAIL ADRESS</td>
+                <td>ACCESS LEVEL</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.UserName</td>
+                    <td>@user.Email</td>
+                    <td>
+                        <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-userid="@user.Id">ACCESS LEVEL</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</main>

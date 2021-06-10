@@ -27,6 +27,10 @@ namespace FilmLibrary.Controllers
             _signInManager = signInManager;
         }
 
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
 
         [HttpGet]
         public IActionResult Register()
@@ -43,7 +47,7 @@ namespace FilmLibrary.Controllers
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    // установка куки
+                    await _userManager.AddToRoleAsync(user, "user");
                     await _signInManager.SignInAsync(user, false);
                     return RedirectToAction("Index", "Film");
                 }
@@ -73,7 +77,6 @@ namespace FilmLibrary.Controllers
                 var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, false);
                 if (result.Succeeded)
                 {
-                    // проверяем, принадлежит ли URL приложению
                     if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
                     {
                         return Redirect(model.ReturnUrl);
@@ -95,7 +98,6 @@ namespace FilmLibrary.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
-            // удаляем аутентификационные куки
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Film");
         }

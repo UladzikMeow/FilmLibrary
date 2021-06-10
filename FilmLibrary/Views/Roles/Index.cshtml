@@ -4,21 +4,23 @@
     Layout = "_Layout";
 }
 
-<h2>Список ролей</h2>
-<table class="table">
-    @foreach (var role in Model)
-    {
-        <tr>
-            <td>@role.Name</td>
-            <td>
-                <form asp-action="Delete" asp-route-id="@role.Id" method="post">
-                    <button type="submit" class="btn btn-sm btn-danger">
-                        Удалить
-                    </button>
-                </form>
-            </td>
-        </tr>
-    }
-</table>
-<a asp-action="Create">Добавить роль</a>
-<a asp-action="UserList">Список пользователей</a>
+<main>
+    <p class="lr-p">Список ролей</p>
+    <div class="main-container3">
+        <div class="block-list">
+            @foreach (var role in Model)
+            {
+                <div class="block-list-role">
+                    <p>@role.Name</p>
+                    <form asp-action="Delete" asp-route-id="@role.Id" method="post">
+                        <button type="submit">
+                            DELETE
+                        </button>
+                    </form>
+                </div>
+            }
+        </div>
+        <a asp-action="Create" asp-controller="Roles">ДОБАВИТЬ РОЛЬ</a>
+        <a asp-action="UserList" asp-controller="Roles">СПИСОК ПОЛЬЗОВАТЕЛЕЙ</a>
+    </div>
+</main>

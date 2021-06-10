@@ -3,7 +3,15 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link href="/css/Layout.css" rel="stylesheet" />
     <link href="/css/style.css" rel="stylesheet" />
+    <link href="/css/Login.css" rel="stylesheet" />
+    <link href="/css/Register.css" rel="stylesheet" />
+    <link href="/css/singlFilm.css" rel="stylesheet" />
+    <link href="/css/RoleIndex.css" rel="stylesheet" />
+    <link href="/css/UserPage.css" rel="stylesheet" />
+    <link href="/css/UserList.css" rel="stylesheet" />
+    <link href="/css/Edit.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;700&display=swap"
           rel="stylesheet" />
@@ -14,10 +22,13 @@
         <div class="logo"><img src="/img/header logo.svg" alt="logo" /></div>
         <div class="userButtons">
             <ul>
-                <li class="serchButton">
-                    <a href="" class="serch">
-                        <img src="/img/search.svg" alt="search" />
-                    </a>
+                <li>
+                    <div class="serchButton">
+                        <form method="get" asp-controller="Film" asp-action="Serch">
+                            <input  type="text" placeholder="Search..." name="Title">
+                            <button type="submit"></button>
+                        </form>
+                    </div>
                 </li>
                 <li class="profileButton">
                     <a asp-action="UserIndex" asp-controller="UserAccount" class="profile">

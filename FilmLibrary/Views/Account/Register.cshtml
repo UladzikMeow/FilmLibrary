@@ -4,30 +4,28 @@
     Layout = "_Layout";
 }
 
-<h2>Регистрация нового пользователя</h2>
-<form method="post" asp-controller="Account" asp-action="Register">
-    <div asp-validation-summary="ModelOnly"></div>
-    <div>
-        <label asp-for="Email"></label><br />
-        <input asp-for="Email" />
-        <span asp-validation-for="Email"></span>
+
+<main>
+    <div class="main-container">
+        <div class="register">
+            <form method="post" asp-controller="Account" asp-action="Register">
+                <div asp-validation-summary="ModelOnly"></div>
+                <p>REGISTER ACCOUNT</p>
+                <label asp-for="UserName">USERNAME</label>
+                <input asp-for="UserName" />
+                @*<span asp-validation-for="UserName"></span>*@
+                <label asp-for="Password">PASSWORD</label>
+                <input asp-for="Password" />
+                @*<span asp-validation-for="PasswordConfirm"></span>*@
+                <label  asp-for="PasswordConfirm">CONFIRM PASSWORD</label>
+                <input  asp-for="PasswordConfirm" />
+                @*<span asp-validation-for="PasswordConfirm"></span>*@
+                <label asp-for="Email">E-MAIL</label>
+                <input asp-for="Email" />
+                @*<span asp-validation-for="Email"></span>*@
+                <button type="submit" value="Регистрация">SIGN UP</button>
+                <button asp-controller="Account" asp-action="Login">LOGIN</button>
+            </form>
+        </div>
     </div>
-    <div>
-        <label asp-for="UserName"></label><br />
-        <input asp-for="UserName" />
-        <span asp-validation-for="UserName"></span>
-    </div>
-    <div>
-        <label asp-for="Password"></label><br />
-        <input asp-for="Password" />
-        <span asp-validation-for="Password"></span>
-    </div>
-    <div>
-        <label asp-for="PasswordConfirm"></label><br />
-        <input asp-for="PasswordConfirm" />
-        <span asp-validation-for="PasswordConfirm"></span>
-    </div>
-    <div>
-        <input type="submit" value="Регистрация" />
-    </div>
-</form>
+</main>

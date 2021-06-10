@@ -13,8 +13,7 @@ namespace FilmLibrary.Data.Models
         public DbSet<Film> Films { get; set; }
         public DbSet<Actor> Actors { get; set; }
         public DbSet<Genre> Genres { get; set; }
-        //public DbSet<User> Users { get; set; }
-        //public DbSet<Role> Roles { get; set; }
+        public DbSet<Review> Reviews { get; set; }
         public FilmContext(DbContextOptions<FilmContext> options) : base(options)
         {
             Database.EnsureCreated();
